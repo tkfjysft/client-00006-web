@@ -1,28 +1,33 @@
 ---
 import { getEntry } from 'astro:content';
 import SectionContainer from './SectionContainer.astro';
+import { HelpCircle } from 'lucide-astro';
 
 const data = await getEntry('home', 'faq');
 if (!data) throw new Error("faq.jsonが見つかりません");
 
-const { title, questions } = data.data as {
-  title: string;
-  questions: { q: string; a: string }[];
-};
+const { title, questions } = data.data;
 ---
 
-<section class="py-24 bg-white-1">
+<section class="py-24 bg-white">
   <SectionContainer>
-    <h2 class="text-3xl font-serif text-main-1 text-center mb-16">{title}</h2>
+    <div class="text-center mb-20">
+      <h2 class="text-4xl md:text-5xl font-serif text-main-1">{title}</h2>
+    </div>
     
-    <div class="max-w-3xl mx-auto space-y-4">
+    <div class="max-w-3xl mx-auto space-y-6">
       {questions.map((item) => (
-        <details class="group border border-base-1 rounded-2xl p-6 hover:border-main-1 transition-colors">
-          <summary class="text-base font-bold text-main-1 cursor-pointer flex justify-between items-center list-none">
-            {item.q}
-            <span class="group-open:rotate-180 transition-transform">▼</span>
+        <details class="group border border-main-1/10 rounded-3xl p-8 bg-white hover:border-main-1/30 hover:shadow-md transition-all duration-300">
+          <summary class="text-lg font-bold text-main-1 cursor-pointer flex justify-between items-center list-none outline-none">
+            <span class="flex items-center gap-4 text-black-1/70">
+              <HelpCircle class="w-6 h-6 text-main-1/40" />
+              {item.q}
+            </span>
+            <span class="text-main-1/40 group-open:rotate-180 transition-transform duration-300">
+              ▼
+            </span>
           </summary>
-          <p class="text-base text-black-1/80 mt-4 leading-relaxed pt-4 border-t border-base-1">
+          <p class="text-base text-black-1/80 mt-6 leading-relaxed pt-6 border-t border-main-1/5">
             {item.a}
           </p>
         </details>

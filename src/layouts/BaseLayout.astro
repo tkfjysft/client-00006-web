@@ -20,24 +20,8 @@ const { title } = Astro.props;
   </head>
   <body class="min-h-screen bg-base-1">
     <Header />
-      <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
-        <div class="text-xl font-serif font-bold text-main-1">{SITE_TITLE}</div>
-        
-        {/* PC用メニュー */}
-        <ul class="hidden md:flex gap-8">
-          {NAV_ITEMS.map((item) => (
-            <li><a href={item.url} class="text-black-1 hover:text-main-1 transition-colors">{item.text}</a></li>
-          ))}
-        </ul>
 
-        {/* ハンバーガーボタン */}
-        <button id="menu-btn" class="md:hidden p-2 text-main-1">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </button>
-      </nav>
-
-
-    <main class="pt-20">
+    <main>
       <slot />
     </main>
 

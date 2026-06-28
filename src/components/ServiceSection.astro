@@ -1,55 +1,49 @@
 ---
 import { getEntry } from 'astro:content';
 import SectionContainer from './SectionContainer.astro';
+import { Clock, Sparkles, Heart, CircleCheck } from 'lucide-astro'; // アイコンをより占いに近いものへ
 
-// データを取得
 const serviceData = await getEntry('home', 'service');
+if (!serviceData) throw new Error("service.jsonが見つかりません");
 
-// 万が一データが存在しない場合への安全対策を追加
-if (!serviceData) {
-  throw new Error("service.jsonが見つかりません");
-}
-
-// ここで型を強制的に定義（これで赤波線は消えます！）
-const { title, description, items } = serviceData.data as {
-  title: string;
-  description: string;
-  items: {
-    name: string;
-    time: string;
-    price: string;
-    description: string;
-    features: string[];
-  }[];
-};
+const { title, description, items } = serviceData.data;
 ---
 
 <section class="py-24 bg-white-1">
   <SectionContainer>
-    <div class="text-center mb-16">
-      <h2 class="text-3xl font-serif text-main-1 mb-4">{title}</h2>
-      {/* text-lg (18px) にアップし、可読性を向上 */}
-      <p class="text-lg text-black-1/70">{description}</p>
+    <div class="text-center mb-16 space-y-4">
+      <h2 class="text-4xl md:text-5xl font-serif text-main-1">{title}</h2>
+      <p class="text-xl text-black-1/60 max-w-xl mx-auto">{description}</p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
-      {items.map((item) => (
-        <div class="p-8 border border-base-1 rounded-3xl bg-base-1/30 flex flex-col">
-          {/* 見出しを text-xl (20px) 以上に統一 */}
-          <h3 class="text-xl font-bold mb-2">{item.name}</h3>
-          <div class="flex items-baseline gap-2 mb-4">
-            <span class="text-2xl font-serif text-main-1">{item.time}</span>
-            {/* text-base (16px) にアップ */}
-            <span class="text-base text-black-1/60">{item.price}</span>
-          </div>
-          {/* text-base (16px) にアップ */}
-          <p class="text-base text-black-1/80 mb-6 flex-grow">{item.description}</p>
+    <div class="grid md:grid-cols-3 gap-8">
+      {items.map((item, index) => (
+        <div class="group p-8 border border-main-1/10 rounded-2xl bg-white shadow-sm hover:shadow-xl hover:border-main-1/30 transition-all duration-500 flex flex-col relative overflow-hidden">
           
-          <ul class="space-y-3 mt-auto border-t border-base-1 pt-6">
+          {/* 上品なコーナーアクセント */}
+          <div class="absolute top-0 right-0 p-4 opacity-20">
+            <Sparkles class="w-8 h-8 text-main-1" />
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-2xl font-serif font-bold text-main-1 mb-2 group-hover:text-main-1/80 transition-colors">
+              {item.name}
+            </h3>
+            <div class="flex items-baseline gap-2 text-black-1/80">
+              <Clock class="w-4 h-4" />
+              <span class="text-xl font-bold">{item.time}</span>
+              <span class="text-base">/ {item.price}</span>
+            </div>
+          </div>
+          
+          <p class="text-black-1/70 mb-8 flex-grow leading-relaxed">
+            {item.description}
+          </p>
+          
+          <ul class="space-y-4 mt-auto border-t border-main-1/5 pt-8">
             {item.features.map((feature) => (
-              /* text-base (16px) にアップ */
               <li class="text-base flex items-center text-black-1/70">
-                <span class="mr-3 text-accent-1">✓</span>
+                <CircleCheck class="w-4 h-4 mr-3 text-main-1/40" />
                 {feature}
               </li>
             ))}

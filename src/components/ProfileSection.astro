@@ -3,41 +3,47 @@ import { getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import profileImage from '../assets/images/owner/face_owner.webp';
 import SectionContainer from './SectionContainer.astro';
-import { OWNER_NAME } from '../data/site'; // site.tsから名前を取得
+import { OWNER_NAME } from '../data/site';
 
 const data = await getEntry('home', 'profile');
 if (!data) throw new Error("profile.jsonが見つかりません");
 
-const { title, text, tags } = data.data as {
-  title: string;
-  text: string;
-  tags: string[];
-};
+const { title, text, tags } = data.data;
 ---
 
-<section class="py-24 bg-base-1/30">
+<section class="py-24 bg-white-1">
   <SectionContainer>
-    <h2 class="text-3xl font-serif text-main-1 text-center mb-16">{title}</h2>
+    <div class="text-center mb-20">
+      <h2 class="text-4xl md:text-5xl font-serif text-main-1">{title}</h2>
+    </div>
     
-    <div class="flex flex-col md:flex-row items-center gap-12 max-w-4xl mx-auto">
-      {/* 写真エリア（今はプレースホルダー） */}
-      <div class="w-64 h-64 md:w-80 md:h-80 bg-base-1 rounded-full flex-shrink-0 border-4 border-white-1 shadow-md">
+    <div class="flex flex-col md:flex-row items-center gap-16 max-w-5xl mx-auto">
+      
+      {/* 写真エリア：丸型ではなく、角を落としたモダンなスタイルで統一 */}
+      <div class="relative flex-shrink-0">
+        <div class="absolute -top-6 -left-6 w-full h-full border border-main-1/20 rounded-3xl -z-10"></div>
         <Image 
           src={profileImage} 
-          alt="占い師顔写真" 
-          class="rounded-3xl shadow-xl w-full h-auto object-cover max-h-[500px]" 
+          alt={OWNER_NAME} 
+          class="rounded-3xl shadow-2xl w-full max-w-[320px] aspect-[4/5] object-cover" 
         />
       </div>
       
       {/* 紹介テキストエリア */}
-      <div>
-        <h3 class="text-2xl font-bold text-main-1 mb-6">{OWNER_NAME}</h3>
-        <p class="text-base text-black-1/80 leading-relaxed whitespace-pre-line mb-8">
+      <div class="space-y-8">
+        <div>
+          <p class="text-sm tracking-widest text-main-1/60 uppercase mb-2">Name</p>
+          <h3 class="text-3xl md:text-4xl font-serif font-bold text-black-1">{OWNER_NAME}</h3>
+        </div>
+        
+        <p class="text-lg md:text-xl text-black-1/80 leading-loose whitespace-pre-line">
           {text}
         </p>
-        <div class="flex flex-wrap gap-3">
+
+        {/* タグエリア：text-base以上でデザイン */}
+        <div class="flex flex-wrap gap-4 pt-4">
           {tags.map((tag) => (
-            <span class="px-4 py-1 border border-main-1 text-main-1 rounded-full text-sm">
+            <span class="px-6 py-2 border border-main-1/20 bg-main-1/5 text-main-1 rounded-full text-base font-medium">
               {tag}
             </span>
           ))}

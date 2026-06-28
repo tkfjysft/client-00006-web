@@ -1,16 +1,25 @@
 ---
 import { NAV_ITEMS, SITE_TITLE } from '../data/site';
-import SectionContainer from './SectionContainer.astro';
+import * as Lucide from 'lucide-astro';
+const getIcon = (name: string) => {
+  return Lucide[name as keyof typeof Lucide];
+};
 ---
 
-<header class="fixed w-full z-50 bg-white-1/80 backdrop-blur-sm border-b border-base-1">
-  <SectionContainer class="flex items-center justify-between py-4">
-    <div class="text-xl font-serif font-bold text-main-1">{SITE_TITLE}</div>
+<header class="fixed w-full h-20 z-50 bg-white/80 backdrop-blur-sm border-b border-base-1">
+  <div class="flex items-center justify-between max-w-[1440px] mx-auto py-4 h-20">
+    <div class="text-3xl font-serif font-bold text-black-1"><a href="/">{SITE_TITLE}</a></div>
     
     <nav class="hidden md:flex gap-8">
-      {NAV_ITEMS.map((item) => (
-        <a href={item.url} class="text-base text-black-1 hover:text-main-1 transition-colors">{item.text}</a>
-      ))}
+      {NAV_ITEMS.map((item) => {
+          const Icon = getIcon(item.icon);
+          return (
+            <a href={item.url} class="flex items-center gap-2 text-base text-black-1 hover:text-accent-1 transition-colors">
+              {Icon && <Icon class="w-4 h-4 text-accent-1" />}
+              <span>{item.text}</span>
+            </a>
+          );
+        })}
     </nav>
 
     {/* 【魔法のボタン】detailsタグでアコーディオンを実装 */}
@@ -30,5 +39,5 @@ import SectionContainer from './SectionContainer.astro';
         </ul>
       </div>
     </details>
-  </SectionContainer>
+  </div>
 </header>
