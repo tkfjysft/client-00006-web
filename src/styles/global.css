@@ -3,11 +3,13 @@
 :root {
   /* ここに共通変数を置く */
   --color-base-1: #FFFDF9;
-  --color-main-1: #bb8edd;
-  --color-accent-1: #f4869a;
+  --color-main-1: #C1775A;
+  --color-accent-1: #8BAB2E;
   --color-black-1: #5D5B57;
   --color-white-1: #FCFBFB;
 }
+
+
 
 
 @theme {
