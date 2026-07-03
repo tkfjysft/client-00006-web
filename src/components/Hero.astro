@@ -1,6 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
+import Link from '../components/Link.astro';
 import heroImage from '../assets/images/hero.webp';
 
 const heroData = (await getEntry('home', 'hero'))!;

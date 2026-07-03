@@ -1,6 +1,7 @@
 ---
 import { NAV_ITEMS, SITE_TITLE } from '../data/site';
 import * as Lucide from 'lucide-astro';
+import Link from '../components/Link.astro';
 const getIcon = (name: string) => {
   return Lucide[name as keyof typeof Lucide];
 };
