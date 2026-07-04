@@ -1,19 +1,18 @@
 ---
 import { getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
-import Link from '../components/Link.astro';
 import heroImage from '../assets/images/hero.webp';
 
 const heroData = (await getEntry('home', 'hero'))!;
-const { heroTitle_A, heroTitle_B, heroSub, heroDescription, buttonText } = heroData.data;
+const { heroTitle_A, heroTitle_B, heroTitle_C, heroSub, heroDescription, buttonText } = heroData.data;
 ---
 
-<section class="relative w-full h-screen flex items-center justify-center px-6 py-12 bg-base-1 overflow-hidden">
+<section class="relative w-full h-screen flex items-center justify-center px-6 py-12 bg-clr-base-1 overflow-hidden">
 
   {/* 装飾コンテナ（背景の円を少し整理） */}
 <div class="absolute inset-0 w-full h-full pointer-events-none">
-	    <div class="absolute -top-10 -left-10 w-80 h-80 bg-main-1/30 rounded-full blur-[100px]"></div>
-    <div class="absolute bottom-35 right-0 w-70 h-70 bg-accent-1/30 rounded-full blur-[100px]"></div>
+	    <div class="absolute -top-10 -left-10 w-80 h-80 bg-clr-main-1/30 rounded-full blur-[100px]"></div>
+    <div class="absolute bottom-35 right-0 w-70 h-70 bg-clr-accent-1/30 rounded-full blur-[100px]"></div>
   </div>
 
   <div class="relative z-10 w-full max-w-[1200px] flex flex-col md:flex-row items-center gap-16">
@@ -21,23 +20,28 @@ const { heroTitle_A, heroTitle_B, heroSub, heroDescription, buttonText } = heroD
     {/* テキストエリア */}
     <div class="flex-1 space-y-8">
       <div class="space-y-4">
-        <p class="text-main-1 font-serif tracking-widest uppercase text-base font-semibold">{heroSub}</p>
-        <h1 class="text-4xl md:text-6xl font-serif leading-[1.2] text-black-1">{heroTitle_A}<span class="text-[40px]" set:html={heroTitle_B} /></h1>
+        <p class="text-clr-main-1 font-serif tracking-widest uppercase text-base font-semibold">{heroSub}</p>
+        <!-- <h1 class=" font-serif leading-[1.2] text-clr-bl-1" set:html=> -->
+        <h1 class="font-serif leading-[1.4] text-clr-bl-1">
+			<span class="text-4xl md:text-6xl">{heroTitle_A}</span><br />
+			<span class="text-[40px]">{heroTitle_B}</span><br />
+			<span class="text-[40px]">{heroTitle_C}</span>
+	  </h1>
       </div>
       
-      <div class="text-black-1/80 leading-relaxed max-w-md" set:html={heroDescription} />
+      <div class="text-clr-bl-1/80 leading-relaxed max-w-md" set:html={heroDescription} />
       
       <div class="pt-4">
-        <Link href="/contact" class="inline-flex items-center bg-main-1 text-white px-10 py-4 rounded-full shadow-lg hover:shadow-main-1/20 transition-all hover:-translate-y-1">
+        <a href="/contact" class="inline-flex items-center bg-clr-main-1 text-white px-10 py-4 rounded-full shadow-lg hover:shadow-clr-main-1/20 transition-all hover:-translate-y-1">
           {buttonText}
-        </Link>
+        </a>
       </div>
     </div>
 
     {/* 写真エリア（フレーム効果を追加） */}
     <div class="flex-1 w-full relative">
       {/* 写真の背後にアクセントの枠を追加 */}
-      <div class="absolute -top-6 -right-6 w-full h-full border border-main-1/20 rounded-3xl -z-10"></div>
+      <div class="absolute -top-6 -right-6 w-full h-full border border-clr-main-1/20 rounded-3xl -z-10"></div>
       
       <Image 
         src={heroImage} 

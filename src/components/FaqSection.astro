@@ -9,25 +9,28 @@ if (!data) throw new Error("faq.jsonが見つかりません");
 const { title, questions } = data.data;
 ---
 
-<section class="py-24 bg-white">
+<section class="py-24 md:py-32 bg-clr-base-1 text-clr-wh-1">
   <SectionContainer>
     <div class="text-center mb-20">
-      <h2 class="text-4xl md:text-5xl font-serif text-main-1">{title}</h2>
+      <h2 class="text-3xl md:text-4xl font-serif text-clr-main-1 tracking-widest uppercase">
+        {title}
+      </h2>
+      <div class="w-20 h-px bg-clr-main-1 mx-auto mt-8"></div>
     </div>
     
     <div class="max-w-3xl mx-auto space-y-6">
       {questions.map((item) => (
-        <details class="group border border-main-1/10 rounded-3xl p-8 bg-white hover:border-main-1/30 hover:shadow-md transition-all duration-300">
-          <summary class="text-lg font-bold text-main-1 cursor-pointer flex justify-between items-center list-none outline-none">
-            <span class="flex items-center gap-4 text-black-1/70">
-              <HelpCircle class="w-6 h-6 text-main-1/40" />
+        <details class="group border border-clr-main-1/20 bg-clr-base-1 p-6 md:p-8 hover:border-clr-main-1/50 transition-all duration-300">
+          <summary class="text-lg md:text-xl font-serif text-clr-main-1 cursor-pointer flex justify-between items-center list-none outline-none">
+            <span class="flex items-center gap-4">
+              <HelpCircle class="w-6 h-6 flex-shrink-0 text-clr-accent-1" />
               {item.q}
             </span>
-            <span class="text-main-1/40 group-open:rotate-180 transition-transform duration-300">
+            <span class="text-clr-main-1 group-open:rotate-180 transition-transform duration-300 ml-4">
               ▼
             </span>
           </summary>
-          <p class="text-base text-black-1/80 mt-6 leading-relaxed pt-6 border-t border-main-1/5">
+          <p class="text-base md:text-lg text-clr-wh-1/90 mt-6 leading-relaxed pt-6 border-t border-clr-main-1/20">
             {item.a}
           </p>
         </details>

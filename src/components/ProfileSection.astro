@@ -11,39 +11,42 @@ if (!data) throw new Error("profile.jsonが見つかりません");
 const { title, text, tags } = data.data;
 ---
 
-<section class="py-24 bg-white-1">
+<section class="py-24 md:py-32 bg-clr-base-1 text-clr-wh-1">
   <SectionContainer>
     <div class="text-center mb-20">
-      <h2 class="text-4xl md:text-5xl font-serif text-main-1">{title}</h2>
+      <h2 class="text-3xl md:text-4xl font-serif text-clr-main-1 tracking-widest uppercase">
+        {title}
+      </h2>
+      <div class="w-20 h-px bg-clr-main-1 mx-auto mt-8"></div>
     </div>
     
-    <div class="flex flex-col md:flex-row items-center gap-16 max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row items-start gap-16 max-w-5xl mx-auto">
       
-      {/* 写真エリア：丸型ではなく、角を落としたモダンなスタイルで統一 */}
-      <div class="relative flex-shrink-0">
-        <div class="absolute -top-6 -left-6 w-full h-full border border-main-1/20 rounded-3xl -z-10"></div>
+      {/* 写真エリア：角を活かした重厚なスタイル */}
+      <div class="relative flex-shrink-0 mx-auto md:mx-0">
+        <div class="absolute -top-4 -left-4 w-full h-full border border-clr-main-1/30"></div>
         <Image 
           src={profileImage} 
           alt={OWNER_NAME} 
-          class="rounded-3xl shadow-2xl w-full max-w-[320px] aspect-[4/5] object-cover" 
+          class="shadow-2xl w-[280px] md:w-[320px] aspect-[4/5] object-cover grayscale brightness-90 border border-clr-main-1/20" 
         />
       </div>
       
       {/* 紹介テキストエリア */}
-      <div class="space-y-8">
+      <div class="space-y-10">
         <div>
-          <p class="text-sm tracking-widest text-main-1/60 uppercase mb-2">Name</p>
-          <h3 class="text-3xl md:text-4xl font-serif font-bold text-black-1">{OWNER_NAME}</h3>
+          <p class="text-base tracking-[0.2em] text-clr-main-1/70 uppercase mb-4">Profile</p>
+          <h3 class="text-3xl md:text-4xl font-serif text-clr-wh-1">{OWNER_NAME}</h3>
         </div>
         
-        <p class="text-lg md:text-xl text-black-1/80 leading-loose whitespace-pre-line">
+        <p class="text-base md:text-lg text-clr-wh-1/90 leading-relaxed whitespace-pre-line">
           {text}
         </p>
 
-        {/* タグエリア：text-base以上でデザイン */}
+        {/* タグエリア：四角形の枠で統一 */}
         <div class="flex flex-wrap gap-4 pt-4">
           {tags.map((tag) => (
-            <span class="px-6 py-2 border border-main-1/20 bg-main-1/5 text-main-1 rounded-full text-base font-medium">
+            <span class="px-6 py-3 border border-clr-main-1/30 text-clr-main-1 text-base font-medium">
               {tag}
             </span>
           ))}

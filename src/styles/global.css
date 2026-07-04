@@ -2,22 +2,22 @@
 
 :root {
   /* ここに共通変数を置く */
-  --color-base-1: #FFFDF9;
-  --color-main-1: #ea7c50;
-  --color-accent-1: #97c609;
-  --color-black-1: #5D5B57;
-  --color-white-1: #FCFBFB;
+  --clr-base-1: #0f172a;
+  --clr-main-1: #d4af37;
+  --clr-accent-1: #67e8f9;
+  --clr-bl-1: #94a3b8;
+  --clr-wh-1: #f8fafc;
 }
 
 
 
 
 @theme {
-  --color-base-1: var(--color-base-1);
-  --color-main-1: var(--color-main-1);
-  --color-accent-1: var(--color-accent-1);
-  --color-black-1: var(--color-black-1);
-  --color-white-1: var(--color-white-1);
+  --color-clr-base-1: var(--clr-base-1);
+  --color-clr-main-1: var(--clr-main-1);
+  --color-clr-accent-1: var(--clr-accent-1);
+  --color-clr-bl-1: var(--clr-bl-1);
+  --color-clr-wh-1: var(--clr-wh-1);
   
   --font-sans: "Noto Sans JP", sans-serif;
   --font-serif: "Noto Serif JP", serif;
@@ -25,13 +25,13 @@
 
 @layer base {
   body {
-    @apply bg-base-1 text-black-1 font-sans font-light leading-relaxed;
+    @apply bg-clr-base-1 text-clr-bl-1 font-sans font-light leading-relaxed;
   }
   h1, h2, h3 {
-    @apply font-serif font-light text-main-1;
+    @apply font-serif font-light text-clr-main-1;
   }
 }
 
 body {
-  @apply bg-base-1 text-black-1 font-sans font-light leading-relaxed overflow-x-hidden;
+  @apply bg-clr-base-1 text-clr-bl-1 font-sans font-light leading-relaxed overflow-x-hidden;
 }

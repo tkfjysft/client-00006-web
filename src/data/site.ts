@@ -1,6 +1,6 @@
 export const NAV_ITEMS = [
   { text: 'トップ', url: '/', icon: 'Home' },
-  { text: '鑑定のご案内', url: '/service', icon: 'Sparkles' },
+  { text: 'セッション', url: '/service', icon: 'Sparkles' },
   { text: 'お客様の声', url: '/voice', icon: 'MessageCircle' },
   { text: 'よくあるご質問', url: '/faq', icon: 'HelpCircle' },
   { text: 'プロフィール', url: '/profile', icon: 'User' },

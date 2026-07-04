@@ -1,7 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import SectionContainer from './SectionContainer.astro';
-import { Clock, Sparkles, Heart, CircleCheck } from 'lucide-astro'; // アイコンをより占いに近いものへ
+import { Clock, Sparkles, CircleCheck } from 'lucide-astro';
 
 const serviceData = await getEntry('home', 'service');
 if (!serviceData) throw new Error("service.jsonが見つかりません");
@@ -9,45 +9,52 @@ if (!serviceData) throw new Error("service.jsonが見つかりません");
 const { title, description, items } = serviceData.data;
 ---
 
-<section class="py-24 bg-white-1">
+<section class="py-32 bg-clr-base-1 relative overflow-hidden">
+  {/* 背景に淡い光のグラデーションを配置して神秘性を演出 */}
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-20 pointer-events-none bg-[radial-gradient(circle_at_top,var(--color-clr-main-1),transparent_70%)]"></div>
+
   <SectionContainer>
-    <div class="text-center mb-16 space-y-4">
-      <h2 class="text-4xl md:text-5xl font-serif text-main-1">{title}</h2>
-      <p class="text-xl text-black-1/60 max-w-xl mx-auto">{description}</p>
+    <div class="text-center mb-20">
+      <h2 class="text-4xl md:text-6xl font-serif text-clr-wh-1 tracking-widest mb-6">
+        {title}
+      </h2>
+      <div class="w-16 h-px bg-clr-main-1 mx-auto mb-6"></div>
+      <p class="text-clr-bl-1 text-lg max-w-lg mx-auto leading-relaxed">{description}</p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      {items.map((item, index) => (
-        <div class="group p-8 border border-main-1/10 rounded-2xl bg-white shadow-sm hover:shadow-xl hover:border-main-1/30 transition-all duration-500 flex flex-col relative overflow-hidden">
+    <div class="grid md:grid-cols-3 gap-6">
+      {items.map((item) => (
+        <div class="relative group bg-clr-base-1 border border-clr-wh-1/10 p-10 hover:border-clr-main-1/50 transition-all duration-700">
           
-          {/* 上品なコーナーアクセント */}
-          <div class="absolute top-0 right-0 p-4 opacity-20">
-            <Sparkles class="w-8 h-8 text-main-1" />
-          </div>
+          {/* カード上部の光の演出 */}
+          <div class="absolute inset-0 bg-gradient-to-b from-clr-main-1/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
-          <div class="mb-8">
-            <h3 class="text-2xl font-serif font-bold text-main-1 mb-2 group-hover:text-main-1/80 transition-colors">
+          <div class="relative z-10 flex flex-col h-full">
+            <h3 class="text-2xl font-serif text-clr-main-1 mb-6 border-b border-clr-main-1/20 pb-4">
               {item.name}
             </h3>
-            <div class="flex items-baseline gap-2 text-black-1/80">
-              <Clock class="w-4 h-4" />
-              <span class="text-xl font-bold">{item.time}</span>
-              <span class="text-base">/ {item.price}</span>
+            
+            <div class="flex items-center gap-4 text-clr-accent-1 mb-8">
+              <Clock class="w-5 h-5" />
+              <div class="flex flex-col">
+                <span class="text-xl font-bold tracking-wider">{item.time}</span>
+                <span class="text-sm opacity-70 tracking-widest">{item.price}</span>
+              </div>
             </div>
+            
+            <p class="text-clr-bl-1 text-base leading-relaxed mb-10 flex-grow">
+              {item.description}
+            </p>
+            
+            <ul class="space-y-3">
+              {item.features.map((feature) => (
+                <li class="flex items-center text-clr-wh-1/80 text-sm tracking-wide">
+                  <span class="mr-3 text-clr-main-1">✦</span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
           </div>
-          
-          <p class="text-black-1/70 mb-8 flex-grow leading-relaxed">
-            {item.description}
-          </p>
-          
-          <ul class="space-y-4 mt-auto border-t border-main-1/5 pt-8">
-            {item.features.map((feature) => (
-              <li class="text-base flex items-center text-black-1/70">
-                <CircleCheck class="w-4 h-4 mr-3 text-main-1/40" />
-                {feature}
-              </li>
-            ))}
-          </ul>
         </div>
       ))}
     </div>
