@@ -4,7 +4,7 @@ export const NAV_ITEMS = [
   { text: 'お客様の声', url: '#voice', icon: 'MessageCircle' },
   { text: 'よくあるご質問', url: '#faq', icon: 'HelpCircle' },
   { text: 'プロフィール', url: '#profile', icon: 'User' },
-  { text: 'ご予約・お問合せ', url: '/contact', icon: 'Mail' },
+  { text: 'ご予約/お問合せ', url: '/contact', icon: 'Mail' },
 ];
 
 export const SITE_TITLE = "MAHO'S SESSION";
