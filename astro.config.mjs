@@ -5,8 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  base: '/e/',
-  site: 'https://portfolio.tsukuri-tai.com',
+  base: '/single/',
+  site: 'https://sws.studio-condor.com/',
   vite: {
     plugins: [tailwindcss()]
   }
