@@ -20,14 +20,14 @@ const getIcon = (name: string) => {
       {NAV_ITEMS.map((item) => {
           const Icon = getIcon(item.icon);
           return (
-            <Link href={item.url} class="txt-luster flex items-center gap-2 font-bold text-base text-clr-bl-1 hover:text-clr-main-1-10 transition-colors tracking-[-0.01em]">
+            <Link href={item.url} class="txt-luster flex items-center gap-2 font-bold text-base text-clr-bl-1 hover:text-clr-accent-1 transition-colors tracking-[-0.01em]">
               {/* {Icon && <Icon class="w-4 h-4 text-clr-accent-1" />} */}
               <span>{item.text}</span>
             </Link>
           );
         })}
     </nav>
-
+	
 
 	<details class="lg:hidden relative">
       <summary class="list-none p-2 text-clr-main-1 cursor-pointer">
