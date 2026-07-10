@@ -7,7 +7,7 @@ export const NAV_ITEMS = [
   { text: 'ご予約/お問合せ', url: '/contact', icon: 'Mail' },
 ];
 
-export const SITE_TITLE = "vvvv'S SESSION";
+export const SITE_TITLE = "ff'S SESSION";
 export const OWNER_NAME = "マホ";
 export const OWNER_FULLNAME = "神崎 真帆";
 export const OWNER_NAME_EN = "MAHO";
