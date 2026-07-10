@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+	"build": "astro build && echo 'cache-bust-$(date +%s)' > dist/cache-bust.txt",
     "preview": "astro preview --host",
     "astro": "astro"
   },
