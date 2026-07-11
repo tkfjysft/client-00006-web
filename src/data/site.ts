@@ -8,6 +8,7 @@ export const NAV_ITEMS = [
 ];
 
 export const SITE_TITLE = "MAHO'S SESSION";
+export const META_DESCRIPTION = "宇宙からの叡智を、あなたの心へ。魂とつながるチャネリング・セッション。高次元のガイドやハイヤーセルフからのメッセージを通じ、迷いを手放し、本来の自分へと還るための深い気づきをお届けします。人生の目的や現状の悩み、魂の道しるべを知りたい方はぜひ一度ご相談ください。";
 export const OWNER_NAME = "マホ";
 export const OWNER_FULLNAME = "神崎 真帆";
 export const OWNER_NAME_EN = "MAHO";
