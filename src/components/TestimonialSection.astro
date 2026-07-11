@@ -4,7 +4,7 @@ import SectionContainer from './SectionContainer.astro';
 import { Quote, User } from 'lucide-astro';
 import { Image } from 'astro:assets';
 import leftTopFrame from '../assets/images/radiance.avif';
-import lineBright from '../assets/images/line_bright.png';
+import lineBright from '../assets/images/line_bright.avif';
 
 const reviewData = await getEntry('home', 'testimonials');
 if (!reviewData) throw new Error("reviews.jsonが見つかりません");

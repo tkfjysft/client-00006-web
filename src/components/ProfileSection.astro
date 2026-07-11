@@ -4,8 +4,7 @@ import profileImage from '../assets/images/owner/face_owner.avif';
 import SectionContainer from './SectionContainer.astro';
 import { OWNER_NAME } from '../data/site';
 import { Image } from 'astro:assets';
-import leftTopFrame from '../assets/images/radiance.avif';
-import lineBright from '../assets/images/line_bright.png';
+import lineBright from '../assets/images/line_bright.avif';
 
 const data = await getEntry('home', 'profile');
 if (!data) throw new Error("profile.jsonが見つかりません");
