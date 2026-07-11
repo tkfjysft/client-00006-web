@@ -5,12 +5,11 @@ import Link from '../components/Link.astro';
 import SectionContainer from './SectionContainer.astro';
 import { SITE_TITLE, OWNER_NAME, POST_CODE, ADDRESS, TEL, FAX, GOOGLE_MAP_URL, OWNER_FULLNAME } from '../data/site';
 import * as Lucide from 'lucide-astro';
-import tarot11 from '../assets/images/tarot/tarot_majar_arcana_11.webp';
-import tarot1 from '../assets/images/tarot/tarot_majar_arcana_1.webp';
+import pht_footer from '../assets/images/pht_footer.avif';
 
 const getIcon = (name: string) => {
   return Lucide[name as keyof typeof Lucide];
-};
+};	
 
 const footerData = (await getEntry('home', 'footer'))!;
 // JSONからデータを抽出
@@ -22,6 +21,19 @@ const copyright = footerData.data.copyright.replace('{NAME}', SITE_TITLE);
 ---
 
 <footer class="relative py-30 bg-clr-wh-1/85">
+
+	<div class="absolute inset-0 flex justify-center pointer-events-none p-10">
+    <div class="relative w-[400px] h-full">
+      <Image 
+          src={pht_footer} 
+          alt="" 
+          width={400} 
+          height={400}
+          class="absolute top-40 md:top-15 left-0 opacity-25 w-[400px] h-auto"
+          aria-hidden="true"
+      />
+    </div>
+  </div>
 
   <SectionContainer>
     <div class="grid md:grid-cols-[1fr_1fr] gap-16 mb-16">
