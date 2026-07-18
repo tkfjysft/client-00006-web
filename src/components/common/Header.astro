@@ -1,8 +1,8 @@
 ---
-import { NAV_ITEMS, SITE_TITLE } from '../data/site';
+import { NAV_ITEMS, SITE_INFO } from '@data/site';
 import * as Lucide from 'lucide-astro';
-import Link from '../components/Link.astro';
-import SectionContainer from './SectionContainer.astro';
+import Link from '@/components/common/Link.astro';
+import SectionContainer from '@/components/common/SectionContainer.astro';
 
 const getIcon = (name: string) => {
   return Lucide[name as keyof typeof Lucide];
@@ -14,7 +14,7 @@ const getIcon = (name: string) => {
 <SectionContainer class="relative z-10">
 
   <div class="flex items-center justify-between mx-auto py-4 h-16 sm:h-20">
-    <div class="txt-luster text-3xl lg:text-[2.5vw] xl:text-4xl font-serif font-bold text-clr-bl-1"><Link href="/">{SITE_TITLE}</Link></div>
+    <div class="txt-luster text-3xl lg:text-[2.5vw] xl:text-4xl font-serif font-bold text-clr-bl-1"><Link href="/">{SITE_INFO.title}</Link></div>
     
     <nav class="hidden lg:flex gap-6">
       {NAV_ITEMS.map((item) => {

@@ -1,12 +1,12 @@
 ---
 import { getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
-import { OWNER_NAME } from '../data/site';
-import SectionContainer from './SectionContainer.astro';
+import { SITE_INFO } from '@data/site';
+import SectionContainer from '@/components/common/SectionContainer.astro';
 
-const greetingData = (await getEntry('home', 'greeting'))!;
-const content = greetingData.data.content.replace('{NAME}', OWNER_NAME);
-const { title } = greetingData.data;
+import greetingData from './greeting.json';
+const content = greetingData.content.replace('{NAME}', SITE_INFO.ownerName);
+const { title } = greetingData;
 ---
 
 <section class="relative py-24 overflow-hidden mt-[50vh]">

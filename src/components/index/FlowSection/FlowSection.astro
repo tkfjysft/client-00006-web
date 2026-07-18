@@ -1,11 +1,11 @@
 ---
 import { getEntry } from 'astro:content';
-import SectionContainer from './SectionContainer.astro';
+import SectionContainer from '@/components/common/SectionContainer.astro';
 import { Image } from 'astro:assets';
-import lineBright from '../assets/images/line_bright.avif';
+import lineBright from '@/assets/images/line_bright.avif';
 
-const flowData = await getEntry('home', 'flow');
-const { title, steps } = flowData.data;
+import flowData from './flow.json';
+const { title, steps } = flowData;
 ---
 
 <section class="section-margin-y py-24 md:py-32 text-clr-wh-1 relative overflow-hidden">
@@ -13,7 +13,7 @@ const { title, steps } = flowData.data;
     <div class="relative mb-20">
 	<Image 
 		src={lineBright} 
-		alt="" 
+		alt="サブタイトル背景" 
 		width={713} 
 		height={300}
 		class="absolute inset-0 top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-[-1] w-[100vw] pointer-events-none mix-blend-screen"

@@ -1,8 +1,8 @@
 ---
 import { getEntry } from 'astro:content';
 
-const heroData = (await getEntry('home', 'hero'))!;
-const { heroTitle, heroSub, heroDescription, buttonText } = heroData.data;
+import heroData from './hero.json';
+const { heroTitle, heroSub, heroDescription, buttonText } = heroData;
 ---
 
 

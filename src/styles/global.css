@@ -62,14 +62,14 @@ body {
 /* 1. 画面が「横長」の場合：PC用画像 (bg_pc.avif) を適用 */
 @media (orientation: landscape) {
   .bg-fixed-container {
-    background-image: url('../assets/images/bg_pc.avif');
+    background-image: url('@/assets/images/bg_pc.avif');
   }
 }
 
 /* 2. 画面が「縦長」の場合：スマホ用画像 (bg_sm.avif) を適用 */
 @media (orientation: portrait) {
   .bg-fixed-container {
-    background-image: url('../assets/images/bg_sm.avif');
+    background-image: url('@/assets/images/bg_sm.avif');
 	opacity: 0.8;
   }
 }

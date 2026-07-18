@@ -1,16 +1,15 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import Greeting from '../components/Greeting.astro';
-import ServiceSection from '../components/ServiceSection.astro';
-import FlowSection from '../components/FlowSection.astro';
-import TestimonialSection from '../components/TestimonialSection.astro';
-import FaqSection from '../components/FaqSection.astro';
-import ProfileSection from '../components/ProfileSection.astro';
-import ScrollToTop from '../components/ScrollToTop.astro';
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/index/Hero/Hero.astro';
+import Greeting from '@/components/index/Greeting/Greeting.astro';
+import ServiceSection from '@/components/index/ServiceSection/ServiceSection.astro';
+import FlowSection from '@/components/index/FlowSection/FlowSection.astro';
+import TestimonialSection from '@/components/index/TestimonialSection/TestimonialSection.astro';
+import FaqSection from '@/components/index/FaqSection/FaqSection.astro';
+import ProfileSection from '@/components/index/ProfileSection/ProfileSection.astro';
 ---
 
-<BaseLayout title="トップページ">
+<Layout title="トップページ">
   <Hero />
   <div class="wrap">
   <Greeting />
@@ -21,5 +20,4 @@ import ScrollToTop from '../components/ScrollToTop.astro';
   <ProfileSection />
   <section class="pt-200 bg-[#ffffff05]"></section>
   </div>
-  <ScrollToTop />
-</BaseLayout>
+</Layout>
